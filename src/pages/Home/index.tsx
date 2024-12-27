@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CardProfile } from "./components/card-profile";
 import { ProfileContext } from "../../context/ProfileContext";
+import { Input } from "../../components/ui/Input";
 
 export function Home() {
   const { issuesData } = useContext(ProfileContext);
@@ -14,6 +15,9 @@ export function Home() {
         <span className="flex items-center text-sm leading-[1.6] text-base-span">
           {issuesData.length} publicações
         </span>
+      </div>
+      <div className="mt-4">
+        <Input />
       </div>
     </main>
   );
