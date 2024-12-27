@@ -1,27 +1,27 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowUpRightFromSquare,
   faBuilding,
-} from '@fortawesome/free-solid-svg-icons';
-import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
-import { Links } from '../../../../components/ui/Link';
-import { useContext } from 'react';
-import { ProfileContext } from '../../../../context/ProfileContext';
+} from "@fortawesome/free-solid-svg-icons";
+import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { Links } from "../../../../components/ui/Link";
+import { useContext } from "react";
+import { ProfileContext } from "../../../../context/ProfileContext";
 
 export function CardProfile() {
   const { profileData } = useContext(ProfileContext);
 
   return (
-    <div className="shadow-custom bg-base-profile p-8 rounded-[10px] -mt-20 flex flex-col sm:flex-row gap-8">
+    <div className="-mt-20 flex flex-col gap-8 rounded-[10px] bg-base-profile p-8 shadow-custom sm:flex-row">
       <img
-        className="size-[148px] rounded-lg self-center sm:self-auto"
+        className="size-[148px] self-center rounded-lg sm:self-auto"
         src={profileData.avatar_url}
         alt=""
       />
-      <div className="flex flex-col mt-2 w-full">
-        <div className="flex sm:justify-between flex-col sm:flex-row gap-2">
-          <h2 className="text-base-title font-bold text-2xl leading-[1.3]">
+      <div className="mt-2 flex w-full flex-col">
+        <div className="flex flex-col gap-2 sm:flex-row sm:justify-between">
+          <h2 className="text-2xl font-bold leading-[1.3] text-base-title">
             {profileData.name}
           </h2>
           <Links
@@ -33,30 +33,30 @@ export function CardProfile() {
 
         <p className="mt-2 leading-[1.6] text-base-text">{profileData.bio}</p>
 
-        <div className="md:mt-auto flex flex-col md:flex-row items-start mt-2 gap-3 sm:gap-6 md:items-center">
-          <div className="flex gap-2 items-center">
+        <div className="mt-2 flex flex-col items-start gap-3 sm:gap-6 md:mt-auto md:flex-row md:items-center">
+          <div className="flex items-center gap-2">
             <FontAwesomeIcon
               icon={faGithub}
-              className="text-base-label size-[18px] mb-[3px]"
+              className="mb-[3px] size-[18px] text-base-label"
             />
             <span className="leading-[1.6] text-base-subtitle">
               {profileData.username}
             </span>
           </div>
 
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <FontAwesomeIcon
               icon={faBuilding}
-              className="text-base-label size-[18px] mb-[3px]"
+              className="mb-[3px] size-[18px] text-base-label"
             />
             <span className="leading-[1.6] text-base-subtitle">
               {profileData.company}
             </span>
           </div>
 
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <FontAwesomeIcon
-              className="text-base-label size-[18px] mb-[3px]"
+              className="mb-[3px] size-[18px] text-base-label"
               icon={faUserGroup}
             />
             <span className="leading-[1.6] text-base-subtitle">

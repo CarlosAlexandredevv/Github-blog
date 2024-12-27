@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from 'react';
-import { api } from '../lib/axios';
+import { createContext, useEffect, useState } from "react";
+import { api } from "../lib/axios";
 
 interface ProfileData {
   avatar_url?: string;
@@ -42,26 +42,26 @@ export function ProfileContextProvider({
   children,
 }: ProfileContextProviderProps) {
   const [profileData, SetProfileData] = useState<ProfileData>({
-    avatar_url: '',
-    name: '',
-    username: '',
-    bio: '',
-    company: '',
+    avatar_url: "",
+    name: "",
+    username: "",
+    bio: "",
+    company: "",
     followers: 0,
-    url: '',
+    url: "",
   });
 
   const [issuesData, setIssuesData] = useState<IssuesData[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await api.get('/users/carlosalexandredevv');
+      const response = await api.get("/users/carlosalexandredevv");
       SetProfileData({
         avatar_url: response.data.avatar_url,
         name: response.data.name,
         username: response.data.login,
-        bio: response.data.bio || 'Sem bio',
-        company: response.data.company || 'Sem empresa',
+        bio: response.data.bio || "Sem bio",
+        company: response.data.company || "Sem empresa",
         followers: response.data.followers,
         url: response.data.html_url,
       });
@@ -73,7 +73,7 @@ export function ProfileContextProvider({
   useEffect(() => {
     const fetchIssues = async () => {
       const response = await api.get(
-        '/repos/CarlosAlexandredevv/Github-blog/issues',
+        "/repos/CarlosAlexandredevv/Github-blog/issues",
       );
       setIssuesData(
         response.data.map((issue: ApiIssueData) => ({

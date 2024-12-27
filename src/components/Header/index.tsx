@@ -1,5 +1,5 @@
 export function Header() {
   return (
-    <header className="bg-header w-full h-[296px] bg-cover bg-center"></header>
+    <header className="h-[296px] w-full bg-header bg-cover bg-center"></header>
   );
 }
