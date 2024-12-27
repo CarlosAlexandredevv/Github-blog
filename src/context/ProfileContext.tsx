@@ -11,8 +11,25 @@ interface ProfileData {
   url: string;
 }
 
+interface IssuesData {
+  id: number;
+  title: string;
+  created_at: string;
+  body: string;
+  comments: number;
+}
+
+interface ApiIssueData {
+  id: number;
+  title: string;
+  created_at: string;
+  body: string;
+  comments: number;
+}
+
 interface ProfileContextType {
   profileData: ProfileData;
+  issuesData: IssuesData[];
 }
 
 export const ProfileContext = createContext({} as ProfileContextType);
@@ -34,6 +51,8 @@ export function ProfileContextProvider({
     url: '',
   });
 
+  const [issuesData, setIssuesData] = useState<IssuesData[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await api.get('/users/carlosalexandredevv');
@@ -51,8 +70,27 @@ export function ProfileContextProvider({
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchIssues = async () => {
+      const response = await api.get(
+        '/repos/CarlosAlexandredevv/Github-blog/issues',
+      );
+      setIssuesData(
+        response.data.map((issue: ApiIssueData) => ({
+          id: issue.id,
+          title: issue.title,
+          created_at: issue.created_at,
+          body: issue.body,
+          comments: issue.comments,
+        })),
+      );
+    };
+
+    fetchIssues();
+  }, []);
+
   return (
-    <ProfileContext.Provider value={{ profileData }}>
+    <ProfileContext.Provider value={{ profileData, issuesData }}>
       {children}
     </ProfileContext.Provider>
   );

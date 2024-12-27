@@ -60,7 +60,7 @@ export function CardProfile() {
               icon={faUserGroup}
             />
             <span className="leading-[1.6] text-base-subtitle">
-              {profileData.followers} followers
+              {profileData.followers} seguidores
             </span>
           </div>
         </div>

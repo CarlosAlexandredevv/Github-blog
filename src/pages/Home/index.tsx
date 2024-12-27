@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { CardProfile } from './components/card-profile';
+import { ProfileContext } from '../../context/ProfileContext';
 
 export function Home() {
   return (
