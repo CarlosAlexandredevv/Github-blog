@@ -22,6 +22,10 @@ export default {
         },
       },
 
+      backgroundImage:{
+        'header': "url('/src/assets/cover.svg')"
+      },
+
       fontFamily:{
         nunito: ['Nunito', 'sans-serif'],
       }
