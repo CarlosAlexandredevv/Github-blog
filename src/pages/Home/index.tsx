@@ -5,6 +5,7 @@ import { Input } from "../../components/ui/Input";
 import { CardIssues } from "../../components/ui/CardIssues";
 import { formatDistanceToNowStrict } from "date-fns";
 import { ptBR } from "date-fns/locale/pt-BR";
+import ReactMarkdown from "react-markdown";
 
 export function Home() {
   const { issuesData } = useContext(ProfileContext);
@@ -25,7 +26,7 @@ export function Home() {
         <Input />
       </form>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
+      <div className="mt-6 grid gap-3 md:grid-cols-2">
         {issuesData.map((issue) => (
           <CardIssues
             key={issue.id}
@@ -34,7 +35,11 @@ export function Home() {
               addSuffix: true,
               locale: ptBR,
             })}
-            body={issue.body.substring(0, 200) + "..."}
+            body={
+              <ReactMarkdown>
+                {issue.body.substring(0, 200) + "..."}
+              </ReactMarkdown>
+            }
           />
         ))}
       </div>

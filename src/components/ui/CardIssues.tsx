@@ -1,7 +1,9 @@
+import React from "react";
+
 interface CardIssues {
   title: string;
   created_at: string;
-  body: string;
+  body: React.ReactNode;
 }
 
 export function CardIssues({ title, created_at, body }: CardIssues) {
