@@ -21,6 +21,13 @@ export default {
           input: '#040F1A',
         },
       },
+      boxShadow: {
+        custom: '0 2px 28px rgba(0, 0, 0, 0.2)', 
+      },
+
+      maxWidth:{
+        'wrapped': '864px'
+      },
 
       backgroundImage:{
         'header': "url('/src/assets/cover.svg')"
