@@ -34,8 +34,6 @@ export function ProfileContextProvider({
     url: '',
   });
 
-  console.log(profileData);
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await api.get('/users/carlosalexandredevv');
@@ -43,8 +41,8 @@ export function ProfileContextProvider({
         avatar_url: response.data.avatar_url,
         name: response.data.name,
         username: response.data.login,
-        bio: response.data.bio || 'No bio',
-        company: response.data.company || 'No company',
+        bio: response.data.bio || 'Sem bio',
+        company: response.data.company || 'Sem empresa',
         followers: response.data.followers,
         url: response.data.html_url,
       });
