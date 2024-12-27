@@ -30,6 +30,7 @@ interface ApiIssueData {
 interface ProfileContextType {
   profileData: ProfileData;
   issuesData: IssuesData[];
+  setIssuesData: React.Dispatch<React.SetStateAction<IssuesData[]>>;
 }
 
 export const ProfileContext = createContext({} as ProfileContextType);
@@ -90,7 +91,7 @@ export function ProfileContextProvider({
   }, []);
 
   return (
-    <ProfileContext.Provider value={{ profileData, issuesData }}>
+    <ProfileContext.Provider value={{ profileData, issuesData, setIssuesData }}>
       {children}
     </ProfileContext.Provider>
   );
