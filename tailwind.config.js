@@ -32,6 +32,7 @@ export default {
 
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],
+        firaCode: ['Fira\\ Code', 'serif']
       },
     },
   },
