@@ -130,7 +130,7 @@ export function PostCard() {
               </div>
             </div>
 
-            <div className="p-8">
+            <div>
               <Markdown
                 className="post space-y-4"
                 components={{
