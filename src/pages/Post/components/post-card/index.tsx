@@ -15,9 +15,8 @@ import { ptBR } from "date-fns/locale/pt-BR";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
-interface PostContentProps {
-  content: string;
-}
+
+type SyntaxHighlighterStyle = { [key: string]: React.CSSProperties };
 
 interface PostIssueCard {
   title: string;
@@ -30,7 +29,7 @@ interface PostIssueCard {
   html_url: string;
 }
 
-export function PostCard({ content }: PostContentProps) {
+export function PostCard() {
   const { id } = useParams();
   const [postData, setPostData] = useState<PostIssueCard>({
     title: "",
@@ -118,21 +117,29 @@ export function PostCard({ content }: PostContentProps) {
           children={postData.body}
           className="post space-y-4"
           components={{
-            code({ node, inline, className, children, ...props }) {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            code({ className, children, style: _style, ref: _ref, ...props }) {
               const match = /language-(\w+)/.exec(className || "");
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  children={String(children).replace(/\n$/, "")}
-                  style={dracula as any}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                />
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
+              if (match) {
+                // Definir 'draculaStyle' com o tipo correto
+                const draculaStyle: SyntaxHighlighterStyle = dracula;
+
+                return (
+                  <SyntaxHighlighter
+                    style={draculaStyle} // Usar o objeto com tipo compatível
+                    language={match[1]}
+                    {...props} // Passar as demais props sem 'style' e 'ref'
+                  >
+                    {String(children).replace(/\n$/, "")}
+                  </SyntaxHighlighter>
+                );
+              } else {
+                return (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              }
             },
           }}
         />
