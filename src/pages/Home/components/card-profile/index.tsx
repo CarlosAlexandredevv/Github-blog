@@ -5,7 +5,7 @@ import {
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
-import { Links } from "../../../../components/ui/Link";
+import { Links } from "../../../../components/ui/Links";
 import { useContext } from "react";
 import { ProfileContext } from "../../../../context/ProfileContext";
 
