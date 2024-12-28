@@ -12,7 +12,7 @@ interface ProfileData {
 }
 
 interface IssuesData {
-  id: number;
+  number: number;
   title: string;
   created_at: string;
   body: string;
@@ -20,7 +20,7 @@ interface IssuesData {
 }
 
 interface ApiIssueData {
-  id: number;
+  number: number;
   title: string;
   created_at: string;
   body: string;
@@ -78,7 +78,7 @@ export function ProfileContextProvider({
       );
       setIssuesData(
         response.data.map((issue: ApiIssueData) => ({
-          id: issue.id,
+          number: issue.number,
           title: issue.title,
           created_at: issue.created_at,
           body: issue.body,

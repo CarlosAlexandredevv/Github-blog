@@ -7,6 +7,7 @@ import { formatDistanceToNowStrict } from "date-fns";
 import { ptBR } from "date-fns/locale/pt-BR";
 import ReactMarkdown from "react-markdown";
 import { api } from "../../lib/axios";
+import { Link } from "react-router-dom";
 
 export function Home() {
   const { issuesData, setIssuesData } = useContext(ProfileContext);
@@ -50,19 +51,23 @@ export function Home() {
 
       <div className="mt-6 grid gap-3 md:grid-cols-2">
         {issuesData.map((issue) => (
-          <CardIssues
-            key={issue.id}
-            title={issue.title}
-            created_at={formatDistanceToNowStrict(new Date(issue.created_at), {
-              addSuffix: true,
-              locale: ptBR,
-            })}
-            body={
-              <ReactMarkdown>
-                {issue.body.substring(0, 200) + "..."}
-              </ReactMarkdown>
-            }
-          />
+          <Link to={`/post/${issue.number}`} key={issue.number}>
+            <CardIssues
+              title={issue.title}
+              created_at={formatDistanceToNowStrict(
+                new Date(issue.created_at),
+                {
+                  addSuffix: true,
+                  locale: ptBR,
+                },
+              )}
+              body={
+                <ReactMarkdown>
+                  {issue.body.substring(0, 200) + "..."}
+                </ReactMarkdown>
+              }
+            />
+          </Link>
         ))}
       </div>
     </main>
