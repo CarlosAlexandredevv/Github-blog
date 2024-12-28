@@ -8,7 +8,6 @@ import { ptBR } from "date-fns/locale/pt-BR";
 import ReactMarkdown from "react-markdown";
 import { api } from "../../lib/axios";
 import { Link } from "react-router-dom";
-import { Skeleton } from "@/components/ui/skeleton";
 import { SkeletonHome } from "./components/skeleton-home";
 
 export function Home() {
@@ -37,23 +36,6 @@ export function Home() {
       {isLoading ? (
         <>
           <SkeletonHome />
-          <div className="mt-14 flex items-center justify-between">
-            <Skeleton className="h-5 w-24 bg-base-label" />
-            <Skeleton className="h-5 w-24 bg-base-label" />
-          </div>
-
-          <div className="mt-4">
-            <Skeleton className="w-full bg-base-label p-6" />
-          </div>
-
-          <div className="mt-6 grid gap-3 pb-3 md:grid-cols-2">
-            {[...Array(6)].map((_, index) => (
-              <Skeleton
-                key={index}
-                className="h-[240px] w-full bg-base-label p-6"
-              />
-            ))}
-          </div>
         </>
       ) : (
         <>
