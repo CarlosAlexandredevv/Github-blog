@@ -74,7 +74,7 @@ export default {
   				'sans-serif'
   			],
   			firaCode: [
-  				'Fira\\\\ Code',
+  				'Fira\ Code',
   				'serif'
   			]
   		},
