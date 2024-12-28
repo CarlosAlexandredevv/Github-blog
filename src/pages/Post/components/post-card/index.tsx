@@ -56,6 +56,7 @@ export function PostCard() {
         setIsLoading(false);
       }
     };
+    window.scrollTo(0, 0);
     getPost();
   }, [id]);
 
