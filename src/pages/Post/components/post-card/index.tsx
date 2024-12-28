@@ -12,11 +12,9 @@ import { useEffect, useState } from "react";
 import { api } from "../../../../lib/axios";
 import { formatDistanceToNowStrict } from "date-fns";
 import { ptBR } from "date-fns/locale/pt-BR";
-import ReactMarkdown from "react-markdown";
+import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
-
-type SyntaxHighlighterStyle = { [key: string]: React.CSSProperties };
 
 interface PostIssueCard {
   title: string;
@@ -113,36 +111,25 @@ export function PostCard() {
       </div>
 
       <div>
-        <ReactMarkdown
-          children={postData.body}
+        <Markdown
           className="post space-y-4"
           components={{
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            code({ className, children, style: _style, ref: _ref, ...props }) {
+            code: ({ className, children, ...props }) => {
               const match = /language-(\w+)/.exec(className || "");
-              if (match) {
-                // Definir 'draculaStyle' com o tipo correto
-                const draculaStyle: SyntaxHighlighterStyle = dracula;
-
-                return (
-                  <SyntaxHighlighter
-                    style={draculaStyle} // Usar o objeto com tipo compatível
-                    language={match[1]}
-                    {...props} // Passar as demais props sem 'style' e 'ref'
-                  >
-                    {String(children).replace(/\n$/, "")}
-                  </SyntaxHighlighter>
-                );
-              } else {
-                return (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                );
-              }
+              return match ? (
+                <SyntaxHighlighter language={match[1]} style={dracula}>
+                  {String(children).replace(/\n$/, "")}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
             },
           }}
-        />
+        >
+          {postData.body}
+        </Markdown>
       </div>
     </main>
   );

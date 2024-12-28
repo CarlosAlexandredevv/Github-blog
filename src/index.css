@@ -31,4 +31,12 @@
   .post span {
     @apply font-firaCode leading-relaxed;
   }
+
+  .post pre {
+    @apply rounded-md !bg-base-post;
+  }
+
+  .post pre > code {
+    @apply rounded-md !bg-base-post;
+  }
 }
