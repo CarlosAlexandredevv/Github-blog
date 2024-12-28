@@ -33,7 +33,7 @@ export function CardProfile() {
 
         <p className="mt-2 leading-[1.6] text-base-text">{profileData.bio}</p>
 
-        <div className="mt-2 flex flex-col items-start gap-3 sm:gap-6 md:mt-auto md:flex-row md:items-center">
+        <div className="mt-2 flex flex-wrap items-start gap-3 sm:gap-6 md:mt-auto md:flex-row md:items-center">
           <div className="flex items-center gap-2">
             <FontAwesomeIcon
               icon={faGithub}

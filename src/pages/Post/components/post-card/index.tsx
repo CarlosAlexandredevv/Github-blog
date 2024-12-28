@@ -72,7 +72,7 @@ export function PostCard() {
           {postData.title}
         </h2>
 
-        <div className="mt-3.5 flex gap-8">
+        <div className="mt-3.5 flex flex-wrap gap-8">
           <div className="flex items-center gap-2">
             <FontAwesomeIcon
               icon={faGithub}
